@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CRUD de Clientes</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>
+                <%= title %>
+            </h1>
+            <p>Preencha os dados abaixo para salvar o cliente.</p>
+            <div class="alert alert-danger col-lg-6">
+                <strong>Erro!</strong> Nome e idade são dados obrigatórios!
+            </div>
+        </div>
+        <div class="row">
+            <form action="<%= action %>" method="POST" role="form" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-1 control-label" for="nome">Nome: </label>
+                    <div class="col-lg-5">
+                        <input type="text" id="nome" name="nome" value="<%= doc.nome %>" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label" for="idade">Idade:</label>
+                    <div class="col-lg-5">
+                        <input type="number" id="idade" name="idade" value="<%= doc.idade %>" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">UF:</label>
+                    <div class="col-lg-5">
+                        <select name="uf" class="form-control">
+                            <% const s = "selected" %>
+                                <option <% if(doc.uf==="RS" ) { %>
+                                    <%= s %>
+                                        <% } %>>RS</option>
+                                <option <% if(doc.uf==="SC" ) { %>
+                                    <%= s %>
+                                        <% } %>>SC</option>
+                                <option <% if(doc.uf==="PR" ) { %>
+                                    <%= s %>
+                                        <% } %>>PR</option>
+                                <!-- coloque os estados que quiser -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2">
+                        <a href="/" class="btn btn-default">Cancelar</a>
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/scripts-new.js"></script>    
+
+</body>
+
+</html>
